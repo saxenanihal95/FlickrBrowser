@@ -30,15 +30,21 @@ class GetRawData extends AsyncTask<String,Void,String>{
         mCallback=callback;
     }
 
+    void runInSameThread(String s){
+        Log.d(TAG, "runInSameThread starts");
+        onPostExecute(doInBackground(s));
+        Log.d(TAG, "runInSameThread ends");
+    }
+
     public void onPostExecute(String s) {
-        Log.d(TAG, "onPostExecute: parameter  = " + s);
+//        Log.d(TAG, "onPostExecute: parameter  = " + s);
         if(mCallback!=null){
             mCallback.onDownloadComplete(s, mDownloadStatus);
         }
         Log.d(TAG, "onPostExecute: ends");
     }
 
-    public String doInBackground( String[] strings){
+    public String doInBackground(String... strings){
         HttpURLConnection connection = null;
         BufferedReader reader = null;
         if (strings == null) {
@@ -88,6 +94,5 @@ class GetRawData extends AsyncTask<String,Void,String>{
         mDownloadStatus = DownloadStatus.FAILED_OR_EMPTY;
         return null;
     }
-
 
 }
