@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:scaleType="fitStart"
-        app:srcCompat="@android:drawable/presence_away"/>
+        app:srcCompat="@drawable/placeholder"/>
 
     <TextView
         android:id="@+id/title"

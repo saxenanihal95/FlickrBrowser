@@ -30,6 +30,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.nihal.flickrbrowser.MainActivity"/>
         </activity>
+        <activity
+            android:name=".PhotoDetailActivity"
+            android:label="@string/title_activity_photo_detail"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
