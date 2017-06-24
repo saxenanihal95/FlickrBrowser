@@ -1,5 +1,6 @@
 package com.example.nihal.flickrbrowser;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements GetFlickrjsonData.OnDataAvailable,
+public class MainActivity extends BaseActivity implements GetFlickrjsonData.OnDataAvailable,
 RecyclerItemClickListener.OnReclyclerClickListener{
 
     private final String TAG = "MainActivity";
@@ -27,8 +28,7 @@ RecyclerItemClickListener.OnReclyclerClickListener{
         Log.d(TAG, "onCreate: starts");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        activateToolbar(false);
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.reclycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this,recyclerView,this));
@@ -88,12 +88,18 @@ RecyclerItemClickListener.OnReclyclerClickListener{
     public void onItemClick(View view, int postition) {
         Log.d(TAG, "onItemClick: starts");
         Toast.makeText(MainActivity.this,"Normal tap at position "+postition,Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this,PhotoDetailActivity.class);
+        intent.putExtra(PHOTO_TRANSFER,mFlickrRecyclerViewAdapter.getPhoto(postition));
+        startActivity(intent);
     }
 
     @Override
     public void onItemLongClick(View view, int postition) {
         Log.d(TAG, "onItemLongClick: starts");
         Toast.makeText(MainActivity.this,"Long tap at position "+postition,Toast.LENGTH_LONG).show();
+        //Intent intent = new Intent(this,PhotoDetailActivity.class);
+        //.putExtra(PHOTO_TRANSFER,mFlickrRecyclerViewAdapter.getPhoto(postition));
+        //startActivity(intent);
 
     }
 }
