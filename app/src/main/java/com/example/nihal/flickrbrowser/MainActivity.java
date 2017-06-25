@@ -67,6 +67,11 @@ RecyclerItemClickListener.OnReclyclerClickListener{
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id==R.id.action_search){
+            Intent intent = new Intent(this,SearchActivity.class);
+            startActivity(intent);
+            return true;
+        }
         Log.d(TAG, "onOptionsItemSelected returned : returned");
         return super.onOptionsItemSelected(item);
     }
