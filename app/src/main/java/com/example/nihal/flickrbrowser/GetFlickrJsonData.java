@@ -15,8 +15,8 @@ import java.util.List;
  * Created by nihal on 22/6/17.
  */
 
-class GetFlickrjsonData extends AsyncTask<String,Void,List<Photo>> implements GetRawData.OnDownloadComplete {
-    private static final String TAG = "GetFlickrjsonData";
+class GetFlickrJsonData extends AsyncTask<String,Void,List<Photo>> implements GetRawData.OnDownloadComplete {
+    private static final String TAG = "GetFlickrJsonData";
 
     private List<Photo> mPhotoList = null;
     private String mBaseURL;
@@ -32,8 +32,8 @@ class GetFlickrjsonData extends AsyncTask<String,Void,List<Photo>> implements Ge
     }
 
 
-    public GetFlickrjsonData(OnDataAvailable callBack,String baseURL, String language, boolean matchAll ) {
-        Log.d(TAG, "GetFlickrjsonData called");
+    public GetFlickrJsonData(OnDataAvailable callBack, String baseURL, String language, boolean matchAll ) {
+        Log.d(TAG, "GetFlickrJsonData called");
         mBaseURL = baseURL;
         mLanguage = language;
         mMatchAll = matchAll;
